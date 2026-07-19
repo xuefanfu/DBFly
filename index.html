@@ -742,8 +742,8 @@
           </div>
 
           <p class="hero-subtitle">
-            A vision-language waypoint prediction framework that explicitly
-            models how a UAV should maneuver and when navigation should terminate.
+            <!-- A vision-language waypoint prediction framework that explicitly
+            models how a UAV should maneuver and when navigation should terminate. -->
           </p>
 
           <div class="authors">
@@ -863,10 +863,10 @@
 
           <p class="caption">
             <strong>Overview of DBFly.</strong>
-            DBFly progressively performs target-direction anchoring,
+            <!-- DBFly progressively performs target-direction anchoring,
             spatial diagnosis, and maneuver decision before continuous
             waypoint prediction. It further determines whether navigation
-            should terminate using terminal-convergence-aware stopping.
+            should terminate using terminal-convergence-aware stopping. -->
           </p>
 
         </div>
@@ -895,35 +895,35 @@
 
           <p>
             UAV see-and-reach navigation requires an aerial agent to
-            precisely approach and reliably stop near a language-specified
+            <!-- precisely approach and reliably stop near a language-specified
             target visible from the UAV's initial viewpoint. Existing
             methods typically map vision-language understanding directly
             to action outputs without explicitly modeling fine-grained
             spatial decisions, resulting in semantic-control misalignment
-            and unreliable termination.
+            and unreliable termination. -->
           </p>
 
           <p>
             We propose <strong>DBFly</strong>, a vision-language waypoint
             prediction framework based on
-            <strong>vision-guided spatial deliberation</strong>. DBFly
+            <!-- <strong>vision-guided spatial deliberation</strong>. DBFly
             explicitly models the progressive reasoning process among
             target-direction anchoring, spatial diagnosis, and maneuver
             decision through a spatial maneuver decision chain. This design
             allows continuous waypoint generation to be regulated by
             high-level navigation intent, improving the consistency between
-            vision-language understanding and executable flight control.
+            vision-language understanding and executable flight control. -->
           </p>
 
           <p>
             DBFly further introduces a
-            <strong>terminal-convergence-aware stopping strategy</strong>,
+            <!-- <strong>terminal-convergence-aware stopping strategy</strong>,
             which formulates navigation termination as a terminal event
             jointly supported by target proximity and short-horizon
             trajectory convergence. Extensive experiments across seen,
             unseen-object, and unseen-scene test settings demonstrate that
             DBFly consistently outperforms strong baseline methods and
-            exhibits promising applicability in real-world UAV navigation.
+            exhibits promising applicability in real-world UAV navigation. -->
           </p>
 
         </div>
@@ -972,9 +972,9 @@
             <p class="caption">
               <strong>Framework architecture.</strong>
               The multimodal backbone receives visual observations,
-              navigation instructions, and geometric support, and produces
+              <!-- navigation instructions, and geometric support, and produces
               structured spatial deliberation, stopping decisions, and
-              continuous waypoints.
+              continuous waypoints. -->
             </p>
 
           </div>
@@ -988,30 +988,30 @@
             <ul class="method-list">
 
               <li>
-                <strong>Spatial Maneuver Decision Chain.</strong>
+                <!-- <strong>Spatial Maneuver Decision Chain.</strong>
                 DBFly progressively performs target-direction anchoring,
                 spatial diagnosis, and maneuver decision before predicting
-                continuous waypoints.
+                continuous waypoints. -->
               </li>
 
               <li>
-                <strong>Implicit Flight Corridor.</strong>
-                A target-relevant geometric constraint provides soft spatial
+                <!-- <strong>Implicit Flight Corridor.</strong> -->
+                <!-- A target-relevant geometric constraint provides soft spatial
                 support for online diagnosis and closed-loop waypoint
-                correction.
+                correction. -->
               </li>
 
               <li>
-                <strong>Terminal-Convergence-Aware Stopping.</strong>
+                <!-- <strong>Terminal-Convergence-Aware Stopping.</strong>
                 Navigation termination is determined by target proximity
                 together with short-horizon trajectory convergence rather
-                than by a single-frame distance threshold alone.
+                than by a single-frame distance threshold alone. -->
               </li>
 
               <li>
-                <strong>Vision-Language Backbone.</strong>
+                <!-- <strong>Vision-Language Backbone.</strong>
                 A Qwen3-VL-based multimodal model generates structured
-                navigation decisions and executable waypoint predictions.
+                navigation decisions and executable waypoint predictions. -->
               </li>
 
             </ul>
@@ -1376,24 +1376,24 @@
 
             <ul class="method-list">
 
-              <li>
+              <!-- <li>
                 Explicitly bridges high-level vision-language understanding
-                and low-level executable waypoint control.
+                and low-level executable waypoint control. -->
               </li>
 
               <li>
-                Improves maneuver consistency through structured
-                vision-guided spatial deliberation.
+                <!-- Improves maneuver consistency through structured
+                vision-guided spatial deliberation. -->
               </li>
 
               <li>
-                Enhances stopping reliability near the target through
-                terminal-convergence-aware termination modeling.
+                <!-- Enhances stopping reliability near the target through
+                terminal-convergence-aware termination modeling. -->
               </li>
 
               <li>
-                Demonstrates strong performance in high-fidelity simulation
-                and promising applicability in real-world UAV experiments.
+                <!-- Demonstrates strong performance in high-fidelity simulation
+                and promising applicability in real-world UAV experiments. -->
               </li>
 
             </ul>
