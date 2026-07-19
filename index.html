@@ -1,14 +1,699 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DBFly</title>
-</head>
+  <meta charset="UTF-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  />
+  <title>DBFly | Vision-Guided Spatial Deliberation for UAV See-and-Reach Navigation</title>
 
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+  />
+
+  <style>
+    :root {
+      --bg: #f6f8fb;
+      --card: #ffffff;
+      --text: #1d2433;
+      --muted: #5b6477;
+      --primary: #2855d9;
+      --primary-dark: #183ca8;
+      --accent: #6f7cff;
+      --border: #e6eaf2;
+      --shadow: 0 8px 30px rgba(25, 42, 89, 0.08);
+      --radius: 18px;
+      --maxw: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.65;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: min(var(--maxw), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(12px);
+      background: rgba(246, 248, 251, 0.85);
+      border-bottom: 1px solid rgba(230, 234, 242, 0.8);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 14px 0;
+    }
+
+    .brand {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    .hero {
+      padding: 56px 0 34px;
+      background:
+        radial-gradient(circle at top left, rgba(111,124,255,0.18), transparent 35%),
+        radial-gradient(circle at top right, rgba(40,85,217,0.12), transparent 30%),
+        linear-gradient(180deg, #f8fbff 0%, #f6f8fb 100%);
+    }
+
+    .hero-card {
+      background: linear-gradient(135deg, #ffffff 0%, #f8faff 100%);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      border-radius: 28px;
+      padding: 44px 36px;
+      text-align: center;
+    }
+
+    .project-tag {
+      display: inline-block;
+      padding: 6px 14px;
+      border-radius: 999px;
+      background: rgba(40, 85, 217, 0.08);
+      color: var(--primary);
+      font-size: 0.9rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .title {
+      margin: 0 auto 14px;
+      font-size: clamp(2rem, 4vw, 3.35rem);
+      line-height: 1.12;
+      max-width: 980px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    .subtitle {
+      max-width: 860px;
+      margin: 0 auto;
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+
+    .authors,
+    .affiliations {
+      margin-top: 16px;
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    .button-row {
+      margin-top: 28px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 18px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: white;
+      color: var(--text);
+      font-weight: 700;
+      transition: 0.25s ease;
+      box-shadow: 0 4px 16px rgba(17, 32, 78, 0.05);
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 24px rgba(17, 32, 78, 0.09);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      color: #fff;
+      border: none;
+    }
+
+    section {
+      padding: 28px 0 40px;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2rem;
+      margin: 0 0 12px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    .section-desc {
+      text-align: center;
+      color: var(--muted);
+      max-width: 760px;
+      margin: 0 auto 28px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 24px;
+    }
+
+    .teaser-image,
+    .figure-image {
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      box-shadow: 0 10px 24px rgba(14, 30, 72, 0.08);
+      background: white;
+    }
+
+    .caption {
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 0.98rem;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .highlight-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .metric-card {
+      text-align: center;
+      padding: 22px 18px;
+    }
+
+    .metric-value {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin-bottom: 6px;
+    }
+
+    .metric-label {
+      font-size: 0.96rem;
+      color: var(--muted);
+    }
+
+    .content {
+      font-size: 1.02rem;
+      color: #2a3140;
+    }
+
+    .content p {
+      margin: 0 0 14px;
+      text-align: justify;
+    }
+
+    .video-card h3,
+    .mini-card h3 {
+      margin: 0 0 10px;
+      font-size: 1.08rem;
+    }
+
+    .video-wrap {
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%;
+      background: #0d1117;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+
+    .video-wrap iframe,
+    .video-wrap video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    .video-note {
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .method-list {
+      margin: 10px 0 0;
+      padding-left: 20px;
+      color: #2b3343;
+    }
+
+    .method-list li {
+      margin-bottom: 10px;
+    }
+
+    .bibtex {
+      background: #101522;
+      color: #ecf2ff;
+      border-radius: 16px;
+      padding: 22px;
+      overflow-x: auto;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    footer {
+      padding: 30px 0 50px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 980px) {
+      .grid-2,
+      .grid-3,
+      .highlight-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-card {
+        padding: 34px 22px;
+      }
+
+      .nav-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .nav-links {
+        gap: 12px;
+      }
+    }
+  </style>
+</head>
 <body>
-  <h1>DBFly</h1>
-  <h2>Deliberate Before You Fly</h2>
-  <p>Vision-Guided Spatial Deliberation for UAV See-and-Reach Navigation.</p>
+
+  <!-- Navigation -->
+  <div class="navbar">
+    <div class="container nav-inner">
+      <div class="brand">DBFly</div>
+      <div class="nav-links">
+        <a href="#overview">Overview</a>
+        <a href="#abstract">Abstract</a>
+        <a href="#method">Method</a>
+        <a href="#simulation">Simulation</a>
+        <a href="#realworld">Real World</a>
+        <a href="#results">Results</a>
+        <a href="#bibtex">BibTeX</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-card">
+        <div class="project-tag">Project Page</div>
+
+        <h1 class="title">
+          Deliberate Before You Fly:
+          Vision-Guided Spatial Deliberation for
+          UAV See-and-Reach Navigation
+        </h1>
+
+        <p class="subtitle">
+          DBFly introduces vision-guided spatial deliberation for UAV see-and-reach navigation,
+          explicitly modeling how to maneuver and when to terminate, thereby improving the
+          consistency between high-level navigation intent and executable continuous flight control.
+        </p>
+
+        <div class="authors">
+          Fanfu Xue, Author Two, Author Three, Author Four
+        </div>
+
+        <div class="affiliations">
+          Shandong University
+        </div>
+
+        <div class="button-row">
+          <a href="https://arxiv.org/abs/xxxx.xxxxx" class="btn btn-primary" target="_blank">
+            <i class="fa-solid fa-file-lines"></i> Paper
+          </a>
+          <a href="https://github.com/xuefanfu/DBFly" class="btn" target="_blank">
+            <i class="fa-brands fa-github"></i> Code
+          </a>
+          <a href="#simulation" class="btn">
+            <i class="fa-solid fa-video"></i> Simulation Videos
+          </a>
+          <a href="#realworld" class="btn">
+            <i class="fa-solid fa-helicopter"></i> Real-World Videos
+          </a>
+          <a href="#bibtex" class="btn">
+            <i class="fa-solid fa-quote-right"></i> BibTeX
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Overview -->
+  <section id="overview">
+    <div class="container">
+      <h2 class="section-title">Overview</h2>
+      <p class="section-desc">
+        A concise overview of the DBFly framework and its core idea.
+      </p>
+
+      <div class="card">
+        <img
+          src="assets/teaser.png"
+          alt="DBFly teaser image"
+          class="teaser-image"
+        />
+        <p class="caption">
+          <strong>Figure 1.</strong> DBFly performs target-direction anchoring,
+          spatial diagnosis, and maneuver decision before continuous waypoint generation,
+          and further determines whether navigation should terminate through a
+          terminal-convergence-aware stopping strategy.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Abstract -->
+  <section id="abstract">
+    <div class="container">
+      <h2 class="section-title">Abstract</h2>
+      <p class="section-desc">
+        A short summary of the task, challenge, and the proposed method.
+      </p>
+
+      <div class="card content">
+        <p>
+          UAV see-and-reach navigation requires an aerial agent to precisely approach and
+          reliably stop near a language-specified target visible from the UAV's initial viewpoint.
+          Existing methods often directly map vision-language understanding to action outputs,
+          without explicitly modeling the fine-grained decision process needed for continuous 3D maneuvering
+          and reliable termination.
+        </p>
+
+        <p>
+          We propose <strong>DBFly</strong>, a vision-language waypoint prediction framework based on
+          <strong>vision-guided spatial deliberation</strong>. DBFly progressively performs
+          target-direction anchoring, spatial diagnosis, and maneuver decision through a
+          spatial maneuver decision chain, allowing continuous waypoint generation to be
+          regulated by high-level navigation intent. Meanwhile, DBFly introduces a
+          <strong>terminal-convergence-aware stopping strategy</strong>, which formulates
+          navigation termination as a terminal event jointly supported by target proximity
+          and short-horizon trajectory convergence.
+        </p>
+
+        <p>
+          Extensive experiments demonstrate that DBFly consistently outperforms strong baselines
+          and shows promising performance in both simulation and real-world UAV experiments.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Method -->
+  <section id="method">
+    <div class="container">
+      <h2 class="section-title">Method</h2>
+      <p class="section-desc">
+        Framework illustration and the main components of DBFly.
+      </p>
+
+      <div class="grid-2">
+        <div class="card">
+          <img
+            src="assets/pipeline.png"
+            alt="DBFly pipeline"
+            class="figure-image"
+          />
+          <p class="caption">
+            <strong>Framework architecture.</strong> Replace this figure with your final DBFly structure diagram.
+          </p>
+        </div>
+
+        <div class="card content">
+          <h3>Core Ideas</h3>
+          <ul class="method-list">
+            <li>
+              <strong>Spatial Maneuver Decision Chain:</strong>
+              explicitly models target-direction anchoring, spatial diagnosis,
+              and maneuver decision before waypoint prediction.
+            </li>
+            <li>
+              <strong>Terminal-Convergence-Aware Stopping:</strong>
+              improves stopping reliability by jointly considering target proximity
+              and short-horizon trajectory convergence.
+            </li>
+            <li>
+              <strong>Vision-Language Backbone:</strong>
+              a Qwen3-VL-based multimodal model produces structured navigation reasoning
+              and executable control decisions.
+            </li>
+            <li>
+              <strong>Closed-Loop Navigation:</strong>
+              the predicted high-level maneuver intent regulates continuous waypoint generation
+              for more consistent and stable flight.
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Simulation Videos -->
+  <section id="simulation">
+    <div class="container">
+      <h2 class="section-title">Simulation Experiments</h2>
+      <p class="section-desc">
+        Demonstrations in seen, unseen-object, and unseen-scene simulation environments.
+      </p>
+
+      <div class="grid-3">
+        <div class="card video-card">
+          <h3>Seen Scene Example</h3>
+          <div class="video-wrap">
+            <video controls playsinline>
+              <source src="assets/sim_seen.mp4" type="video/mp4" />
+            </video>
+          </div>
+          <div class="video-note">
+            Example simulation video in a seen environment.
+          </div>
+        </div>
+
+        <div class="card video-card">
+          <h3>Unseen-Object Example</h3>
+          <div class="video-wrap">
+            <video controls playsinline>
+              <source src="assets/sim_uo.mp4" type="video/mp4" />
+            </video>
+          </div>
+          <div class="video-note">
+            Generalization to unseen-object settings.
+          </div>
+        </div>
+
+        <div class="card video-card">
+          <h3>Unseen-Scene Example</h3>
+          <div class="video-wrap">
+            <video controls playsinline>
+              <source src="assets/sim_us.mp4" type="video/mp4" />
+            </video>
+          </div>
+          <div class="video-note">
+            Generalization to unseen-scene settings.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Real-world Videos -->
+  <section id="realworld">
+    <div class="container">
+      <h2 class="section-title">Real-World UAV Experiments</h2>
+      <p class="section-desc">
+        Real-world flight demonstrations showing target approaching and reliable termination.
+      </p>
+
+      <div class="grid-2">
+        <div class="card video-card">
+          <h3>Real-World Demo 1</h3>
+          <div class="video-wrap">
+            <video controls playsinline>
+              <source src="assets/real_demo_1.mp4" type="video/mp4" />
+            </video>
+          </div>
+          <div class="video-note">
+            Replace this description with the scenario details of the first real-world experiment.
+          </div>
+        </div>
+
+        <div class="card video-card">
+          <h3>Real-World Demo 2</h3>
+          <div class="video-wrap">
+            <video controls playsinline>
+              <source src="assets/real_demo_2.mp4" type="video/mp4" />
+            </video>
+          </div>
+          <div class="video-note">
+            Replace this description with the scenario details of the second real-world experiment.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Results -->
+  <section id="results">
+    <div class="container">
+      <h2 class="section-title">Results Highlights</h2>
+      <p class="section-desc">
+        Showcase your main quantitative gains and takeaways here.
+      </p>
+
+      <div class="highlight-grid">
+        <div class="card metric-card">
+          <div class="metric-value">+26.69%</div>
+          <div class="metric-label">Average SR Improvement</div>
+        </div>
+
+        <div class="card metric-card">
+          <div class="metric-value">SOTA</div>
+          <div class="metric-label">Performance on Benchmark</div>
+        </div>
+
+        <div class="card metric-card">
+          <div class="metric-value">Reliable</div>
+          <div class="metric-label">Target-Side Termination</div>
+        </div>
+
+        <div class="card metric-card">
+          <div class="metric-value">Strong</div>
+          <div class="metric-label">Generalization Ability</div>
+        </div>
+      </div>
+
+      <div style="height: 22px;"></div>
+
+      <div class="grid-2">
+        <div class="card">
+          <img
+            src="assets/qualitative.png"
+            alt="Qualitative results"
+            class="figure-image"
+          />
+          <p class="caption">
+            <strong>Qualitative results.</strong> You can place trajectory visualizations,
+            success/failure comparisons, or representative examples here.
+          </p>
+        </div>
+
+        <div class="card content">
+          <h3>Key Advantages</h3>
+          <ul class="method-list">
+            <li>
+              Explicitly bridges high-level vision-language reasoning and low-level
+              executable waypoint control.
+            </li>
+            <li>
+              Improves maneuver consistency through structured spatial deliberation.
+            </li>
+            <li>
+              Enhances termination reliability near the target with terminal-convergence-aware stopping.
+            </li>
+            <li>
+              Demonstrates strong performance in both high-fidelity simulation and real-world UAV experiments.
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BibTeX -->
+  <section id="bibtex">
+    <div class="container">
+      <h2 class="section-title">BibTeX</h2>
+      <p class="section-desc">
+        Citation information for the paper.
+      </p>
+
+      <div class="bibtex">
+<pre>@article{xue2027dbfly,
+  title   = {Deliberate Before You Fly: Vision-Guided Spatial Deliberation for UAV See-and-Reach Navigation},
+  author  = {Xue, Fanfu and Author, Two and Author, Three},
+  journal = {arXiv preprint arXiv:xxxx.xxxxx},
+  year    = {2027}
+}</pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      © 2027 DBFly Project Page. Built with GitHub Pages.
+    </div>
+  </footer>
+
 </body>
 </html>
