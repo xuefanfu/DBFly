@@ -1,6 +1,5 @@
 <div align="center">
 
-# DBFly
 
 ### Deliberate Before You Fly: Vision-Guided Spatial Deliberation for UAV See-and-Reach Navigation
 
@@ -9,63 +8,19 @@
 [![Project Page](https://img.shields.io/badge/Project-Page-2f80ed?style=for-the-badge)](https://xuefanfu.github.io/DBFly-Page/)
 [![Code](https://img.shields.io/badge/Code-GitHub-181717?style=for-the-badge&logo=github)](https://github.com/xuefanfu/DBFly)
 [![Dataset](https://img.shields.io/badge/Dataset-UAV--VLN--FOV-00a67d?style=for-the-badge)](https://pan.baidu.com/s/1slWa79ZdNIHid_fwqyhdxA?pwd=ymav)
+[![Simulator](https://img.shields.io/badge/Simulator-TravelUAV-f59e0b?style=for-the-badge)](https://huggingface.co/datasets/wangxiangyu0814/TravelUAV_env)
 ![Model Weights](https://img.shields.io/badge/Model_Weights-Coming_Soon-lightgrey?style=for-the-badge)
 ![Paper](https://img.shields.io/badge/Paper-Coming_Soon-lightgrey?style=for-the-badge)
 
 </div>
 
-<p align="center">
-  <img src="https://raw.githubusercontent.com/xuefanfu/DBFly-Page/main/assets/DBFly.png" width="96%" alt="DBFly framework">
-</p>
-
 ## Overview
 
 **DBFly** (*Deliberate Before You Fly*) is a vision-language waypoint prediction framework for UAV **see-and-reach navigation**. Instead of directly mapping visual observations and language instructions to low-level waypoints, DBFly explicitly performs structured spatial deliberation before flight execution.
 
-At each navigation step, DBFly receives a language instruction, current front-view and downward-view observations, an initial target-direction prior, and an online flight-corridor state. It then produces a structured navigation decision containing:
-
-- target-direction anchoring;
-- spatial diagnosis;
-- maneuver selection;
-- stopping prediction; and
-- five continuous future waypoints in the current UAV body frame.
-
-The framework contains four principal components:
-
-1. **Implicit Flight Corridor**  
-   Converts the initial target-direction prior and UAV odometry into a persistent target-oriented geometric reference, providing soft guidance for online spatial diagnosis and maneuver correction.
-
-2. **Spatial Maneuver Decision Chain**  
-   Decomposes navigation into target-direction anchoring, spatial diagnosis, and maneuver decision, improving semantic-to-control consistency.
-
-3. **Terminal-Convergence-Aware Stopping**  
-   Predicts whether the UAV should stop by jointly considering target proximity and motion convergence, reducing premature or unstable termination.
-
-4. **Continuous Waypoint Generation**  
-   Predicts five future displacement waypoints in the current UAV body frame for closed-loop execution.
-
-## Highlights
-
-- **Structured spatial deliberation:** separates visual grounding, spatial reasoning, maneuver planning, stopping, and waypoint generation.
-- **Dual-view perception:** uses front-view and downward-view egocentric observations for target anchoring and local flight control.
-- **Corridor-guided navigation:** maintains a persistent geometric reference derived from the initial target-direction prior.
-- **Reliable stopping:** explicitly models terminal convergence rather than relying only on direct waypoint regression.
-- **Closed-loop evaluation:** supports high-fidelity Unreal Engine and AirSim simulation with continuous waypoint execution.
-- **Real-world feasibility:** DBFly has also been evaluated on a physical UAV platform.
-
-## Results
-
-DBFly is evaluated on the three UAV-VLN-FOV test splits. Each reported result is obtained from a single closed-loop evaluation run.
-
-| Split | SR ↑ | OSR ↑ | NE ↓ | SPL ↑ |
-|:--|--:|--:|--:|--:|
-| Test | **62.50** | **71.05** | **16.83** | **42.37** |
-| Test UO | **51.83** | **63.41** | **21.39** | **36.07** |
-| Test US | **49.13** | **57.23** | **22.21** | **31.24** |
-
-- **Test UO:** unseen-object evaluation.
-- **Test US:** unseen-scene evaluation.
-- A trajectory is considered successful when the final UAV-to-target distance is no greater than **10 m**.
+<p align="center">
+  <img src="https://raw.githubusercontent.com/xuefanfu/DBFly-Page/main/assets/DBFly.png" width="96%" alt="DBFly framework">
+</p>
 
 ## Repository Structure
 
@@ -117,40 +72,6 @@ DBFly/
 ```
 
 The `dataset/`, `env_unzip/`, `weights/`, `result/`, and `log_files/` directories are local runtime resources and are not included in this repository.
-
-## Installation
-
-### 1. Clone the repository
-
-```bash
-git clone https://github.com/xuefanfu/DBFly.git
-cd DBFly
-```
-
-### 2. Create a Conda environment
-
-```bash
-conda create -n dbfly python=3.10 -y
-conda activate dbfly
-```
-
-### 3. Install dependencies
-
-The released configuration uses PyTorch 2.4.0 with CUDA 11.8.
-
-```bash
-pip install -r requirements.txt \
-  --extra-index-url https://download.pytorch.org/whl/cu118
-
-pip install numpy scipy pillow
-```
-
-Recommended platform:
-
-- Linux;
-- NVIDIA GPU with CUDA support;
-- at least 24 GB GPU memory for FP16 inference;
-- sufficient storage for the UAV-VLN-FOV dataset and simulation environments.
 
 ## Pretrained Weights
 
@@ -247,6 +168,40 @@ Simulator root: ./env_unzip
 Simulator port: 30000
 Auxiliary ports: 30001 and 30002
 ```
+
+## Installation
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/xuefanfu/DBFly.git
+cd DBFly
+```
+
+### 2. Create a Conda environment
+
+```bash
+conda create -n dbfly python=3.10 -y
+conda activate dbfly
+```
+
+### 3. Install dependencies
+
+The released configuration uses PyTorch 2.4.0 with CUDA 11.8.
+
+```bash
+pip install -r requirements.txt \
+  --extra-index-url https://download.pytorch.org/whl/cu118
+
+pip install numpy scipy pillow
+```
+
+Recommended platform:
+
+- Linux;
+- NVIDIA GPU with CUDA support;
+- at least 24 GB GPU memory for FP16 inference;
+- sufficient storage for the UAV-VLN-FOV dataset and simulation environments.
 
 ## Evaluation
 
@@ -348,53 +303,6 @@ Alternatively, update `EVAL_SAVE_PATH` in `scripts/metric.sh` to a split-specifi
 bash scripts/metric.sh
 ```
 
-## Reproducibility Notes
-
-- The success radius is fixed to **10 m**.
-- DBFly predicts **five** future waypoints at every navigation step.
-- Waypoints are represented in the current UAV body frame, where `x` is forward, `y` is right, and `z` is down.
-- The initial target-direction prior belongs to `{front_left, front, front_right, down}`.
-- The online corridor state belongs to `{corridor_centered, corridor_left_deviation, corridor_right_deviation, corridor_down_approach}`.
-- Each reported test result is obtained from a single closed-loop evaluation run.
-- For reproducible comparisons, keep the simulator environments, data splits, success radius, and evaluation scripts unchanged.
-
-## Troubleshooting
-
-### The simulator does not start
-
-Check that:
-
-- the environments are located under `env_unzip/`;
-- all required `.sh` files are executable;
-- ports `30000`–`30002` are available; and
-- `lsof` is installed because the launcher uses it to identify stale processes.
-
-```bash
-sudo apt-get install lsof
-```
-
-### The model cannot be loaded
-
-Verify that `--model_path` points to a complete merged Hugging Face checkpoint rather than an isolated LoRA adapter.
-
-### CUDA out-of-memory error
-
-Confirm that no unrelated processes occupy the selected GPU:
-
-```bash
-nvidia-smi
-```
-
-Change `GPU_ID` in `scripts/eval_DBFly.sh` when another GPU should be used.
-
-### No output appears in the terminal
-
-This is expected after model initialization because the evaluator redirects standard output to `log_files/`. Inspect the corresponding log file:
-
-```bash
-tail -f log_files/test.txt
-```
-
 ## Acknowledgements
 
 This repository builds upon or benefits from the following projects and resources:
@@ -447,4 +355,3 @@ For questions, bug reports, or reproducibility issues, please open a GitHub issu
 **DBFly — Deliberate before execution, navigate with structured spatial reasoning.**
 
 </div>
-
