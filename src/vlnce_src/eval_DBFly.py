@@ -514,7 +514,7 @@ def eval(
 
                     # --------------------------------------------------------
                     # Image order must match training:
-                    #   [Initial Front, Current Front, Current Down]
+                    #   [Current Front, Current Down]
                     # --------------------------------------------------------
 
                     images_list.append(
