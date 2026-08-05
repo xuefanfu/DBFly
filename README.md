@@ -76,7 +76,7 @@ The `dataset/`, `env_unzip/`, `model/`, `result/`, and `log_files/` directories 
 
 The pretrained DBFly model will be released after the paper-release process is completed.
 
-> **Status:** [DBFly](https://pan.baidu.com/s/1slWa79ZdNIHid_fwqyhdxA?pwd=ymav)
+> **Status:** DBFly (Coming Soon)
 
 After downloading the checkpoint, place it under:
 
