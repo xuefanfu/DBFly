@@ -143,20 +143,6 @@ DBFly/
     └── extra_envs/
 ```
 
-Keep the downloaded directory structure unchanged. Ensure that the environment launch scripts are executable:
-
-```bash
-find env_unzip -type f -name "*.sh" -exec chmod +x {} \;
-```
-
-The default evaluation launcher starts `AirVLNSimulatorServerTool.py` automatically with:
-
-```text
-Simulator root: ./env_unzip
-Simulator port: 30000
-Auxiliary ports: 30001 and 30002
-```
-
 ## Installation
 
 ### 1. Clone the repository
