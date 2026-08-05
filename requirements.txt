@@ -1,0 +1,8 @@
+airsim==1.8.1
+msgpack_rpc_python==0.4.1
+opencv_contrib_python==4.12.0.88
+opencv_python==4.12.0.88
+torch==2.4.0+cu118
+tqdm==4.67.1
+transformers==4.57.3
+yacs==0.1.8

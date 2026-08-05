@@ -1,0 +1,4 @@
+/opt/data/private/xff-project2/UAV-VLN/DBFly/airsim_plugin/AirVLNSimulatorServerTool.py:647: DeprecationWarning: setDaemon() is deprecated, set the daemon attribute instead
+  t.setDaemon(daemon)
+PROJECT_ROOT_DIR /opt/data/private/xff-project2/UAV-VLN/DBFly
+start listening 	127.0.0.1:30000

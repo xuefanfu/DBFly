@@ -1,0 +1,19 @@
+# Ignore all root-level files and directories
+/*
+
+# Keep selected directories
+!/airsim_plugin/
+!/meta/
+!/scripts/
+!/src/
+!/utils/
+
+# Keep selected files
+!/requirements.txt
+!/.gitignore
+
+# Ignore generated files inside retained directories
+**/__pycache__/
+**/*.pyc
+**/*.pyo
+**/.ipynb_checkpoints/
