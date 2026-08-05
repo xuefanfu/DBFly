@@ -106,7 +106,7 @@ DBFly is trained and evaluated on **UAV-VLN-FOV**, a high-resolution UAV see-and
 ### Download
 
 - **Baidu Cloud:** [Download UAV-VLN-FOV](https://pan.baidu.com/s/1slWa79ZdNIHid_fwqyhdxA?pwd=ymav)
-- **Dataset source:** [3DG-VLN repository](https://github.com/xuefanfu/3DG-VLN)
+- **Source repository:** [3DG-VLN repository](https://github.com/xuefanfu/3DG-VLN)
 
 Organize the extracted dataset as follows:
 
