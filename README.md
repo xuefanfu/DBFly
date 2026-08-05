@@ -76,7 +76,7 @@ The `dataset/`, `env_unzip/`, `model/`, `result/`, and `log_files/` directories 
 
 The pretrained DBFly model will be released after the paper-release process is completed.
 
-> **Status:** Coming soon.
+> **Status:** [DBFly](https://pan.baidu.com/s/1slWa79ZdNIHid_fwqyhdxA?pwd=ymav)
 
 After downloading the checkpoint, place it under:
 
@@ -105,7 +105,7 @@ DBFly is trained and evaluated on **UAV-VLN-FOV**, a high-resolution UAV see-and
 
 ### Download
 
-- **Baidu Cloud:** [Download UAV-VLN-FOV](https://pan.baidu.com/s/1slWa79ZdNIHid_fwqyhdxA?pwd=ymav)
+- **Baidu Cloud:** [UAV-VLN-FOV](https://pan.baidu.com/s/1slWa79ZdNIHid_fwqyhdxA?pwd=ymav)
 - **Source repository:** [3DG-VLN repository](https://github.com/xuefanfu/3DG-VLN)
 
 Organize the extracted dataset as follows:
