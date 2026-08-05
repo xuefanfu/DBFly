@@ -165,13 +165,6 @@ The released configuration uses PyTorch 2.4.0 with CUDA 11.8.
 pip install -r requirements.txt 
 ```
 
-Recommended platform:
-
-- Linux;
-- NVIDIA GPU with CUDA support;
-- at least 24 GB GPU memory for FP16 inference;
-- sufficient storage for the UAV-VLN-FOV dataset and simulation environments.
-
 ## Evaluation
 
 ###  Run closed-loop evaluation
