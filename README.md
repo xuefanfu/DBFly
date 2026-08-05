@@ -8,7 +8,6 @@
 [![Project Page](https://img.shields.io/badge/Project-Page-2f80ed?style=for-the-badge)](https://xuefanfu.github.io/DBFly-Page/)
 [![Code](https://img.shields.io/badge/Code-GitHub-181717?style=for-the-badge&logo=github)](https://github.com/xuefanfu/DBFly)
 [![Dataset](https://img.shields.io/badge/Dataset-UAV--VLN--FOV-00a67d?style=for-the-badge)](https://pan.baidu.com/s/1slWa79ZdNIHid_fwqyhdxA?pwd=ymav)
-[![Simulator](https://img.shields.io/badge/Simulator-TravelUAV-f59e0b?style=for-the-badge)](https://huggingface.co/datasets/wangxiangyu0814/TravelUAV_env)
 ![Model](https://img.shields.io/badge/Model-Coming_Soon-lightgrey?style=for-the-badge)
 ![Paper](https://img.shields.io/badge/Paper-Coming_Soon-lightgrey?style=for-the-badge)
 
@@ -107,7 +106,6 @@ DBFly is trained and evaluated on **UAV-VLN-FOV**, a high-resolution UAV see-and
 ### Download
 
 - **Baidu Cloud:** [Download UAV-VLN-FOV](https://pan.baidu.com/s/1slWa79ZdNIHid_fwqyhdxA?pwd=ymav)
-- **Extraction code:** `ymav`
 - **Dataset source:** [3DG-VLN repository](https://github.com/xuefanfu/3DG-VLN)
 
 Organize the extracted dataset as follows:
@@ -164,10 +162,7 @@ conda activate dbfly
 The released configuration uses PyTorch 2.4.0 with CUDA 11.8.
 
 ```bash
-pip install -r requirements.txt \
-  --extra-index-url https://download.pytorch.org/whl/cu118
-
-pip install numpy scipy pillow
+pip install -r requirements.txt 
 ```
 
 Recommended platform:
@@ -179,66 +174,10 @@ Recommended platform:
 
 ## Evaluation
 
-### 1. Configure the evaluation script
-
-Open `scripts/eval_DBFly.sh` and verify the following variables:
-
-```bash
-SIM_ROOT="$ROOT_DIR/env_unzip"
-SIM_PORT=30000
-MASTER_PORT=60001
-GPU_ID=0
-```
-
-Configure the model path, evaluation dataset path, and result save path in `scripts/eval_DBFly.sh`. For the standard Test split, use:
-
-```bash
---dataset_path "$ROOT_DIR/dataset/test" \
---eval_save_path "$ROOT_DIR/result/test" \
---model_path "$ROOT_DIR/model/DBFly" \
---map_spawn_area_json_path "$ROOT_DIR/meta/map_spawnarea_info.json" \
---obj_desc_json_path "$ROOT_DIR/meta/instruction.json"
-```
-
-### 2. Run closed-loop evaluation
+###  Run closed-loop evaluation
 
 ```bash
 bash scripts/eval_DBFly.sh
-```
-
-The launcher:
-
-1. terminates stale processes on ports `30000`, `30001`, and `30002`;
-2. starts the AirSim simulator server;
-3. launches DBFly closed-loop evaluation; and
-4. restarts the simulator and evaluator after an abnormal exit.
-
-Set `MAX_RETRY` in `scripts/eval_DBFly.sh` to control the number of automatic restarts. The default value `-1` enables unlimited retries. Press `Ctrl+C` to stop evaluation manually.
-
-### 3. Evaluate different splits
-
-Run the evaluator once for each split by changing `--dataset_path` and `--eval_save_path`:
-
-| Evaluation split | Dataset path | Result path |
-|:--|:--|:--|
-| Test | `dataset/test` | `result/test` |
-| Test UO | `dataset/unobject` | `result/unobject` |
-| Test US | `dataset/unscene` | `result/unscene` |
-
-The evaluator predicts a structured JSON decision and exactly five body-frame waypoints at each step. Predicted waypoints are transformed into the world frame and executed in closed loop.
-
-### 4. Runtime logs
-
-The evaluation program redirects console output to:
-
-```text
-log_files/<result-directory-name>.txt
-```
-
-For example, evaluation with `--eval_save_path result/test` writes runtime messages to:
-
-```text
-log_files/test.txt
 ```
 
 ## Metric Computation
@@ -250,29 +189,6 @@ The evaluation reports:
 - **NE:** Navigation Error in meters;
 - **SPL:** Success weighted by Path Length.
 
-To evaluate the Test split directly, run:
-
-```bash
-python utils/metric.py \
-  --eval_save_path result/test \
-  --eval_test_path dataset/test \
-  --eval_unscene_path dataset/unscene \
-  --eval_unobject_path dataset/unobject \
-  --object_info_path meta/map_spawnarea_info.json
-```
-
-For Test UO or Test US, change only `--eval_save_path`:
-
-```bash
-# Test UO
---eval_save_path result/unobject
-
-# Test US
---eval_save_path result/unscene
-```
-
-Alternatively, update `EVAL_SAVE_PATH` in `scripts/metric.sh` to a split-specific result directory and run:
-
 ```bash
 bash scripts/metric.sh
 ```
@@ -283,9 +199,6 @@ This repository builds upon or benefits from the following projects and resource
 
 - [UAV-VLN-FOV / 3DG-VLN](https://github.com/xuefanfu/3DG-VLN)
 - [TravelUAV](https://github.com/prince687028/TravelUAV)
-- [Microsoft AirSim](https://github.com/microsoft/AirSim)
-- [Hugging Face Transformers](https://github.com/huggingface/transformers)
-- [Qwen-VL](https://github.com/QwenLM/Qwen-VL)
 
 We sincerely thank the authors and maintainers of these projects.
 
@@ -316,16 +229,3 @@ Please also cite the UAV-VLN-FOV benchmark:
 }
 ```
 
-## License
-
-No license file is currently included in this repository. Please contact the authors before reusing, redistributing, or commercially deploying the code.
-
-## Contact
-
-For questions, bug reports, or reproducibility issues, please open a GitHub issue in this repository.
-
-<div align="center">
-
-**DBFly — Deliberate before execution, navigate with structured spatial reasoning.**
-
-</div>
