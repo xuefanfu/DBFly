@@ -93,7 +93,14 @@ DBFly/
         └── ...
 ```
 
+The current evaluator loads the model through Hugging Face `AutoProcessor` and `AutoModelForImageTextToText`. Therefore, the supplied path must point to a **merged Hugging Face checkpoint**. A standalone LoRA adapter cannot be loaded directly by the current evaluation script.
+
+After the weights are available, update `--model_path` in `scripts/eval_DBFly.sh`:
+
+```bash
+--model_path "$ROOT_DIR/weights/DBFly" \
 ```
+
 ## UAV-VLN-FOV Dataset
 
 DBFly is trained and evaluated on **UAV-VLN-FOV**, a high-resolution UAV see-and-reach navigation benchmark containing:
