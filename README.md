@@ -121,13 +121,8 @@ DBFly/
     └── unscene/
 ```
 
-Only `test`, `unobject`, and `unscene` are required for evaluation. The `train` split is required only for training or additional analysis.
+Only `test`, `unobject`, and `unscene` are required for evaluation. The `train` split is required only for training.
 
-Large datasets may also be stored outside the repository and linked into the expected location:
-
-```bash
-ln -s /absolute/path/to/UAV-VLN-FOV/dataset ./dataset
-```
 
 ## Simulator Environments
 
