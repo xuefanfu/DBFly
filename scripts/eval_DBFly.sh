@@ -79,9 +79,9 @@ do
         --batchSize 1 \
         --maxWaypoints 100 \
         --dataset_path $ROOT_DIR/dataset/test \
-        --eval_save_path  $ROOT_DIR/result/test3 \
+        --eval_save_path  $ROOT_DIR/result/test \
         --log_path  $ROOT_DIR/log_files \
-        --model_path   /opt/data/private/xff-project2/LLaMA-Factory/uav_vln_fov_final_corrected_20260606_new_sampled_no_first_image \
+        --model_path   $ROOT_DIR/models/DBFly \
         --map_spawn_area_json_path $ROOT_DIR/meta/map_spawnarea_info.json \
         --obj_desc_json_path $ROOT_DIR/meta/instruction.json
 
