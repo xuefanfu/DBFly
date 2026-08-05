@@ -70,7 +70,7 @@ do
     echo "[INFO] Retry count: ${retry_count}"
     echo "=========================================="
 
-    CUDA_VISIBLE_DEVICES=${GPU_ID} python -u $ROOT_DIR/src/vlnce_src/eval_IFC-VLN.py \
+    CUDA_VISIBLE_DEVICES=${GPU_ID} python -u $ROOT_DIR/src/vlnce_src/eval_DBFly.py \
         --run_type eval \
         --name  qwen3_vl \
         --gpu_id 0 \
