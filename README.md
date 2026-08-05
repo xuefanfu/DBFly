@@ -9,7 +9,7 @@
 [![Code](https://img.shields.io/badge/Code-GitHub-181717?style=for-the-badge&logo=github)](https://github.com/xuefanfu/DBFly)
 [![Dataset](https://img.shields.io/badge/Dataset-UAV--VLN--FOV-00a67d?style=for-the-badge)](https://pan.baidu.com/s/1slWa79ZdNIHid_fwqyhdxA?pwd=ymav)
 [![Simulator](https://img.shields.io/badge/Simulator-TravelUAV-f59e0b?style=for-the-badge)](https://huggingface.co/datasets/wangxiangyu0814/TravelUAV_env)
-![Model Weights](https://img.shields.io/badge/Model_Weights-Coming_Soon-lightgrey?style=for-the-badge)
+![Model](https://img.shields.io/badge/Model-Coming_Soon-lightgrey?style=for-the-badge)
 ![Paper](https://img.shields.io/badge/Paper-Coming_Soon-lightgrey?style=for-the-badge)
 
 </div>
@@ -60,7 +60,7 @@ DBFly/
 │   ├── carla_town_envs/
 │   ├── closeloop_envs/
 │   └── extra_envs/
-├── weights/
+├── model/
 │   └── DBFly/                     # Merged Hugging Face checkpoint
 ├── result/                        # Evaluation trajectories and logs
 │   ├── test/
@@ -71,11 +71,11 @@ DBFly/
 └── README.md
 ```
 
-The `dataset/`, `env_unzip/`, `weights/`, `result/`, and `log_files/` directories are local runtime resources and are not included in this repository.
+The `dataset/`, `env_unzip/`, `model/`, `result/`, and `log_files/` directories are local runtime resources and are not included in this repository.
 
-## Pretrained Weights
+## Pretrained Model
 
-The pretrained DBFly weights will be released after the paper-release process is completed.
+The pretrained DBFly model will be released after the paper-release process is completed.
 
 > **Status:** Coming soon.
 
@@ -83,7 +83,7 @@ After downloading the checkpoint, place it under:
 
 ```text
 DBFly/
-└── weights/
+└── model/
     └── DBFly/
         ├── config.json
         ├── generation_config.json
@@ -190,12 +190,12 @@ MASTER_PORT=60001
 GPU_ID=0
 ```
 
-The repository currently contains a local absolute path in `--model_path`. Replace it with the downloaded checkpoint path. For the standard Test split, the core arguments should be:
+Configure the model path, evaluation dataset path, and result save path in `scripts/eval_DBFly.sh`. For the standard Test split, use:
 
 ```bash
 --dataset_path "$ROOT_DIR/dataset/test" \
 --eval_save_path "$ROOT_DIR/result/test" \
---model_path "$ROOT_DIR/weights/DBFly" \
+--model_path "$ROOT_DIR/model/DBFly" \
 --map_spawn_area_json_path "$ROOT_DIR/meta/map_spawnarea_info.json" \
 --obj_desc_json_path "$ROOT_DIR/meta/instruction.json"
 ```
