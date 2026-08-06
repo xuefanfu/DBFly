@@ -8,7 +8,7 @@
 [![Project Page](https://img.shields.io/badge/Project-Page-2f80ed?style=for-the-badge)](https://xuefanfu.github.io/DBFly-Page/)
 [![Code](https://img.shields.io/badge/Code-GitHub-181717?style=for-the-badge&logo=github)](https://github.com/xuefanfu/DBFly)
 [![Dataset](https://img.shields.io/badge/Dataset-UAV--VLN--FOV-00a67d?style=for-the-badge)](https://pan.baidu.com/s/1slWa79ZdNIHid_fwqyhdxA?pwd=ymav)
-![Model](https://img.shields.io/badge/Model-Coming_Soon-lightgrey?style=for-the-badge)
+[![Model](https://img.shields.io/badge/Model-Baidu_Drive-blue?style=for-the-badge)](https://pan.baidu.com/s/1Nwd5oMXVd1-49-JORsq2LQ?pwd=4fqb)
 [![Paper](https://img.shields.io/badge/Paper-DBFly-00a67d?style=for-the-badge)](https://arxiv.org/abs/2608.04825)
 
 </div>
@@ -74,9 +74,7 @@ The `dataset/`, `env_unzip/`, `model/`, `result/`, and `log_files/` directories 
 
 ## Pretrained Model
 
-The pretrained DBFly model will be released after the paper-release process is completed.
-
-> **Status:** DBFly (Coming Soon)
+[![Model](https://img.shields.io/badge/Model-Baidu_Drive-blue?style=for-the-badge)](https://pan.baidu.com/s/1Nwd5oMXVd1-49-JORsq2LQ?pwd=4fqb)
 
 After downloading the checkpoint, place it under:
 
