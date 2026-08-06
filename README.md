@@ -77,7 +77,7 @@ The `dataset/`, `env_unzip/`, `model/`, `result/`, and `log_files/` directories 
 ### Download
 
 - **Baidu Cloud:** [DBFly](https://pan.baidu.com/s/1Nwd5oMXVd1-49-JORsq2LQ?pwd=4fqb)
-- 
+
 After downloading the checkpoint, place it under:
 
 ```text
