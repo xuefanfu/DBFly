@@ -74,8 +74,10 @@ The `dataset/`, `env_unzip/`, `model/`, `result/`, and `log_files/` directories 
 
 ## Pretrained Model
 
-[![Model](https://img.shields.io/badge/Model-Baidu_Drive-blue?style=for-the-badge)](https://pan.baidu.com/s/1Nwd5oMXVd1-49-JORsq2LQ?pwd=4fqb)
+### Download
 
+- **Baidu Cloud:** [DBFly](https://pan.baidu.com/s/1Nwd5oMXVd1-49-JORsq2LQ?pwd=4fqb)
+- 
 After downloading the checkpoint, place it under:
 
 ```text
