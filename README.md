@@ -60,7 +60,7 @@ DBFly/
 │   ├── closeloop_envs/
 │   └── extra_envs/
 ├── model/
-│   └── DBFly/                     # Merged Hugging Face checkpoint
+│   └── DBFly/                     # Model
 ├── result/                        # Evaluation trajectories and logs
 │   ├── test/
 │   ├── unobject/
