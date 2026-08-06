@@ -9,7 +9,7 @@
 [![Code](https://img.shields.io/badge/Code-GitHub-181717?style=for-the-badge&logo=github)](https://github.com/xuefanfu/DBFly)
 [![Dataset](https://img.shields.io/badge/Dataset-UAV--VLN--FOV-00a67d?style=for-the-badge)](https://pan.baidu.com/s/1slWa79ZdNIHid_fwqyhdxA?pwd=ymav)
 ![Model](https://img.shields.io/badge/Model-Coming_Soon-lightgrey?style=for-the-badge)
-![Paper](https://img.shields.io/badge/Paper-Coming_Soon-lightgrey?style=for-the-badge)
+![Paper]([https://img.shields.io/badge/Paper-Coming_Soon-lightgrey?style=for-the-badge](https://arxiv.org/abs/2608.04825))
 
 </div>
 
@@ -201,10 +201,13 @@ If DBFly is useful for your research, please cite the DBFly paper. The following
 
 ```bibtex
 @misc{xue2026dbfly,
-  title        = {Deliberate Before You Fly: Vision-Guided Spatial Deliberation for UAV See-and-Reach Navigation},
-  author       = {Fanfu Xue and En Yu and Bohang Liu and Hongjun Wang and Yang Yang and Xindi Wang and Jiande Sun},
-  year         = {2026},
-  note         = {Manuscript under review}
+      title={Deliberate Before You Fly: Vision-Guided Spatial Deliberation for UAV See-and-Reach Navigation}, 
+      author={Fanfu Xue and En Yu and Bohang Liu and Hongjun Wang and Yang Yang and Xindi Wang and Jiande Sun},
+      year={2026},
+      eprint={2608.04825},
+      archivePrefix={arXiv},
+      primaryClass={cs.RO},
+      url={https://arxiv.org/abs/2608.04825}, 
 }
 ```
 
