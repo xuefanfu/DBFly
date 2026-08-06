@@ -9,7 +9,7 @@
 [![Code](https://img.shields.io/badge/Code-GitHub-181717?style=for-the-badge&logo=github)](https://github.com/xuefanfu/DBFly)
 [![Dataset](https://img.shields.io/badge/Dataset-UAV--VLN--FOV-00a67d?style=for-the-badge)](https://pan.baidu.com/s/1slWa79ZdNIHid_fwqyhdxA?pwd=ymav)
 ![Model](https://img.shields.io/badge/Model-Coming_Soon-lightgrey?style=for-the-badge)
-![Paper]([https://img.shields.io/badge/Paper-Coming_Soon-lightgrey?style=for-the-badge](https://arxiv.org/abs/2608.04825))
+![Paper](https://img.shields.io/badge/Dataset-UAV--VLN--FOV-00a67d?style=for-the-badge)](https://arxiv.org/abs/2608.04825))
 
 </div>
 
