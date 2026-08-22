@@ -76,7 +76,10 @@ The `dataset/`, `env_unzip/`, `model/`, `result/`, and `log_files/` directories 
 
 ### Download
 
-- **Baidu Cloud:** [DBFly](https://pan.baidu.com/s/1Nwd5oMXVd1-49-JORsq2LQ?pwd=4fqb)
+- **Baidu Cloud:** [DBFly Model](https://pan.baidu.com/s/1Nwd5oMXVd1-49-JORsq2LQ?pwd=4fqb)  
+  Password: `4fqb`
+
+- **Hugging Face:** [DBFly Model](https://huggingface.co/fanfuxue/DBFly)
 
 After downloading the checkpoint, place it under:
 
@@ -105,7 +108,10 @@ DBFly is trained and evaluated on **UAV-VLN-FOV**, a high-resolution UAV see-and
 
 ### Download
 
-- **Baidu Cloud:** [UAV-VLN-FOV](https://pan.baidu.com/s/1slWa79ZdNIHid_fwqyhdxA?pwd=ymav)
+- **Baidu Cloud:** [UAV-VLN-FOV Dataset](https://pan.baidu.com/s/1slWa79ZdNIHid_fwqyhdxA?pwd=ymav)  
+  Password: `ymav`
+
+- **Hugging Face:** [UAV-VLN-FOV Dataset](https://huggingface.co/datasets/fanfuxue/UAV-VLN-FOV)
 - **Source repository:** [3DG-VLN repository](https://github.com/xuefanfu/3DG-VLN)
 
 Organize the extracted dataset as follows:
