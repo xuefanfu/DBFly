@@ -21,6 +21,10 @@
   <img src="https://raw.githubusercontent.com/xuefanfu/DBFly-Page/main/assets/DBFly.png" width="96%" alt="DBFly framework">
 </p>
 
+> [!IMPORTANT]
+> ✨ **Dataset Update — Training Initial-Direction Prompts Released**
+>
+> We have released the initial coarse-direction prompt for every training trajectory in the meta folder of UAV-VLN-FOV. 
 ## Repository Structure
 
 After downloading the external resources, the recommended repository layout is:
