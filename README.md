@@ -24,7 +24,7 @@
 > [!IMPORTANT]
 > ✨ **Dataset Update — Training Initial-Direction Prompts Released**
 >
-> We have released the initial coarse-direction prompt for every training trajectory in the meta folder of UAV-VLN-FOV. 
+> We have released the initial coarse-direction prompts for each training trajectory in the `meta` folder of UAV-VLN-FOV.
 ## Repository Structure
 
 After downloading the external resources, the recommended repository layout is:
