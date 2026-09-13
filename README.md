@@ -21,6 +21,10 @@
   <img src="https://raw.githubusercontent.com/xuefanfu/DBFly-Page/main/assets/DBFly.png" width="96%" alt="DBFly framework">
 </p>
 
+# Repository Structure
+
+After downloading the external resources, the recommended repository layout is:
+
 ```text
 DBFly/
 ├── airsim_plugin/
