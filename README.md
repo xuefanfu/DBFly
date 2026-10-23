@@ -1,7 +1,7 @@
 <div align="center">
 
 
-### Deliberate Before You Fly: Vision-Guided Spatial Deliberation for UAV See-and-Reach Navigation
+### Deliberate Before You Fly: Control-Oriented Spatial Decision Decomposition for UAV See-and-Reach Navigation
 
 **Fanfu Xue**, **En Yu**, **Bohang Liu**, **Hongjun Wang**, **Yang Yang**, **Xindi Wang**, **Jiande Sun**
 
