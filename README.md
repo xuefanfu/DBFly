@@ -3,7 +3,7 @@
 
 ### Deliberate Before You Fly: Control-Oriented Spatial Decision Decomposition for UAV See-and-Reach Navigation
 
-**Fanfu Xue**, **En Yu**, **Bohang Liu**, **Hongjun Wang**, **Yang Yang**, **Xindi Wang**, **Jiande Sun**
+**Fanfu Xue**, **En Yu**, **Bohang Liu**, **Hongjun Wang**, **Yang Yang**, **Xindi Wang**, **Xiaojun Chang**, **Jiande Sun**
 
 [![Project Page](https://img.shields.io/badge/Project-Page-2f80ed?style=for-the-badge)](https://xuefanfu.github.io/DBFly-Page/)
 [![Code](https://img.shields.io/badge/Code-GitHub-181717?style=for-the-badge&logo=github)](https://github.com/xuefanfu/DBFly)
